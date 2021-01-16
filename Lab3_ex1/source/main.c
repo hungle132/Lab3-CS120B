@@ -14,7 +14,8 @@
 
 int main(void) {
     /* Insert DDR and PORT initializations */
-
+DDRA = 0x00; PORTA = 0xFF; // Configure port A's  pins as inputs
+	DDRC = 0xFF; PORTC = 0x00;
     /* Insert your solution below */
     while (1) {
 
