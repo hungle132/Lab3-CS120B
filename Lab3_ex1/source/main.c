@@ -11,7 +11,9 @@
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-
+unsigned char GetBit(unsigned char x, unsigned char k) {
+   return ((x & (0x01 << k)) != 0);
+}
 int main(void) {
     /* Insert DDR and PORT initializations */
 DDRA = 0x00; PORTA = 0xFF; // Configure port A's  pins as inputs
@@ -23,14 +25,16 @@ unsigned char tmpB = 0x00;
 unsigned char val = 0x00;
     /* Insert your solution below */
     while (1) {
-	
-	for(unsigned int i = 0; i < 8 ; i++){
-		tmpA = GetBit(PINA,i);
-		if(tmpA == 1){
+	val = 0;
+	tmpA = PINA;
+	tmpB = PINB;
+	for(unsigned char i = 0; i < 8 ; i++){
+		
+		if(GetBit(tmpA,i)){
 		val = val + 1;
 		}
-		tmpB = GetBit(PINB,i);
-		if(tmpB == 1){
+		
+		if(GetBit(tmpB,i)){
 		val = val + 1;
 		}	
 	}
