@@ -21,7 +21,7 @@ int main(void) {
     /* Insert your solution below */
     while (1) {
 	tmpA = PINA;
-	if(tmpA == 1 || tmpA == 2){
+	if(tmpA == 0x01 || tmpA == 0x02){
 		PORTC = 0x20; //100000 sets PC5 to on;
 	}
 	else if (tmpA == 3 || tmpA == 4){
@@ -41,7 +41,7 @@ int main(void) {
 	}
 	if (tmpA <= 4){
 		lessthan = 0x40;
-		PORTC = tmpA + lessthan;
+		PORTC = PORTC + lessthan;
 	}
     }
     return 1;
