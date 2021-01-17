@@ -18,9 +18,11 @@ int main(void) {
 	DDRC = 0xFF; PORTC = 0x00;
 	unsigned char tmpA = 0x00;
 	unsigned char lessthan = 0x00;
+	unsigned char fasten = 0x00;
     /* Insert your solution below */
     while (1) {
-	tmpA = PINA;
+	tmpA = PINA & 0x0F;
+	tmp4 = PINA & 0xF0;
 	if(tmpA == 0x01 || tmpA == 0x02){
 		PORTC = 0x20; //100000 sets PC5 to on;
 	}
@@ -42,6 +44,10 @@ int main(void) {
 	if (tmpA <= 4){
 		lessthan = 0x40;
 		PORTC = PORTC + lessthan;
+	}
+	tmp4 = tmp4 & 0x70;
+	if (tmp4 == 0x30){
+		PORTC = PORTC + 0x80;
 	}
     }
     return 1;
