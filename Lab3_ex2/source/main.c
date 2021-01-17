@@ -20,8 +20,11 @@ int main(void) {
 	unsigned char lessthan = 0x00;
     /* Insert your solution below */
     while (1) {
-	tmpA = PINA;
-	if(tmpA == 0x01 || tmpA == 0x02){
+	tmpA = PINA & 0x0F;
+	if(tmpA == 0x00){
+		PORTC = 0;
+	}
+	else if(tmpA == 0x01 || tmpA == 0x02){
 		PORTC = 0x20; //100000 sets PC5 to on;
 	}
 	else if (tmpA == 3 || tmpA == 4){
